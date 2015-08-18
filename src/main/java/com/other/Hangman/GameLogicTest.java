@@ -26,7 +26,7 @@ public class GameLogicTest {
 		//when
 		gl.setCurrentWord(new Word("trawa"));
 		gl.checkLetterAndMoidifyGaps('w');
-		String gaps=gl.getCurrentWord().getWordWithGaps();
+		String gaps=gl.getWordWithGaps();
 		//then
 		Assert.assertEquals("_ _ _ w _", gaps);
 		

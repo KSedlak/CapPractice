@@ -10,14 +10,21 @@ import javax.swing.JComponent;
 public class HangmanPainting extends JComponent {
 	private int pivot;
 	private HangmanDraw hg;
-
+	private GameResult gr;	
+	
 	public HangmanPainting() {
 	pivot=0;
 	hg=new HangmanDraw();
+	gr=null;
 	}
 
 	public void paint(Graphics g) {
 		FigureCoordinates temp;
+		if(gr!=null){
+			g.setColor(gr.getColor());
+			g.setFont(new Font("Arial", 2, 50));
+			g.drawString(gr.getMessage(), 20, 50);
+		}
 		for (int i = 0; i < pivot; i++) {
 			temp = hg.getLinesOfHangMan().get(i);
 		if(temp.isOval()){
@@ -25,13 +32,14 @@ public class HangmanPainting extends JComponent {
 		}else{
 			g.drawLine(temp.getX1(), temp.getY1(), temp.getX2(), temp.getY2());
 		}
-			if(pivot==hg.getLinesOfHangMan().size()){
-				g.setColor(Color.RED);
-				g.setFont(new Font("Arial", 2, 50));
-				g.drawString("GAME OVER", 20, 50);
-			}
+			
 		}
 
+	}
+
+	public void setGr(GameResult gr) {
+		this.gr = gr;
+		repaint();
 	}
 
 	public int getPivot() {

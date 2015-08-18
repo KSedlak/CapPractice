@@ -39,7 +39,7 @@ public class WindowFrame extends JFrame {
 		gl=g;
 		kl=new KeyboardListener(this);
 		addKeyListener(kl);
-		wp=new WordPresentation(gl.getCurrentWord());
+		wp=new WordPresentation(gl);
 		wrongCounter=new JLabel();
 		hp=gl.getHp();
 		

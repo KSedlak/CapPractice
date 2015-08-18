@@ -9,9 +9,9 @@ import javax.swing.JLabel;
 
 
 public	class WordPresentation extends JComponent {
-	private Word word;
+	private GameLogic word;
 
-		public WordPresentation(Word w) {
+		public WordPresentation(GameLogic w) {
 		word=w;
 		setFocusable(true);
 		}
@@ -23,11 +23,11 @@ public	class WordPresentation extends JComponent {
 		}
 
 		public Word getWord() {
-			return word;
+			return word.getCurrentWord();
 		}
 
 		public void setWord(Word word) {
-			this.word = word;
+			this.word.setCurrentWord(word);
 			repaint();
 		}
 		
