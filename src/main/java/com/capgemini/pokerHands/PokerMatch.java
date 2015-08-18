@@ -13,13 +13,7 @@ public class PokerMatch {
 	}
 
 	public int playMatch() { //compare players hands
-
-		if (players[0].hand.compareTo(players[1].hand) == -1) {
-			return 0;
-		}
-
-			return 1;
-		
+		return players[0].hand.compareTo(players[1].hand);	
 	}
 
 	public int getWinner() {

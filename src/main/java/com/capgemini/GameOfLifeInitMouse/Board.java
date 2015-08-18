@@ -100,17 +100,16 @@ public class Board {
 		for (Cell c : listOfCells) {//calculate next states
 			int temp = c.getNumberOfLifeNeighbours();
 			LifeStatus curr = c.getCurrentState();
-			if (curr.equals(LifeStatus.Life) && (temp < 2 || temp > 3)) {
+			c.setNextState(curr);
+			
+			if (curr.equals(LifeStatus.Life) && (temp < 2 || temp > 3)) 
 				c.setNextState(LifeStatus.Dead);
-			} 
-			else if (curr.equals(LifeStatus.Dead) && temp == 3) {
+			
+			
+			if (curr.equals(LifeStatus.Dead) && temp == 3) 
 				c.setNextState(LifeStatus.Life);
-			} else {
-				c.setNextState(curr);
-
-			}
-
 		}
+	
 		generation++;
 		for (Cell c : listOfCells) {//switch current to next state
 			c.setCurrentState(c.getNextState());

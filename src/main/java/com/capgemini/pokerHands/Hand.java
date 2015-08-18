@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 
 public class Hand implements Comparable<Hand> {
 	private LinkedHashMap<Rank, Integer> deck;
+	private LinkedHashMap<String, Integer> mapValues;
 	private Suit suit;
 	private boolean sameColor;
 	private boolean con;
@@ -22,6 +23,7 @@ public class Hand implements Comparable<Hand> {
 		deck = new LinkedHashMap();
 		sameColor = true;
 		con = false;
+		initMapValues();
 
 	}
 
@@ -58,7 +60,7 @@ public class Hand implements Comparable<Hand> {
 	}
 
 	public boolean isConsecutive() {
-	if(maxCardsInHand==cardInHand()){
+
 		Iterator<Rank> hIterator = deck.keySet().iterator();
 		Rank a= hIterator.next();
 		do{
@@ -68,7 +70,7 @@ public class Hand implements Comparable<Hand> {
 		}
 		a=b;
 		}while(hIterator.hasNext());
-	}
+	
 		return true;
 	}
 
@@ -84,28 +86,16 @@ public class Hand implements Comparable<Hand> {
 
 	@Override
 	public int compareTo(Hand o) {
-		int value1 = 0;
-		int value2 = 0;
-
-		for (PossibleValues p : PossibleValues.values()) { // get ordinals
-
-			if (handRepresentation.equals(p.getCombination()) && p.getColorSame() == sameColor && p.getCon() == con) {
-				value1 = p.ordinal();
-			}
-			if (o.handRepresentation.equals(p.getCombination()) && p.getColorSame() == o.isSameColor()
-					&& p.getCon() == o.isCon()) {
-				value2 = p.ordinal();
-			}
-		}
-
-		if (value1 > value2) {
-			return -1;
-		} else if (value1 < value2) {
+		int value1 = mapValues.get(this.handRepresentation+this.sameColor+this.con);
+		int value2 = mapValues.get(o.handRepresentation+o.sameColor+o.con);	
+		
+		if (value1 > value2) 
 			return 1;
-		} else {
-			return compareSameHand(this, o);
-		}
+		
+		if (value1 < value2) 
+			return 0;
 
+			return compareSameHand(this, o);
 	}
 
 	public int compareSameHand(Hand h1, Hand h2) {
@@ -117,13 +107,11 @@ public class Hand implements Comparable<Hand> {
 			r1 = (Rank) h1Ranks[i];
 			r2 = (Rank) h2Ranks[i];
 
-			if (r1.ordinal() > r2.ordinal()) {
-				return -1;
-			}
-			if (r1.ordinal() < r2.ordinal()) {	
+			if (r1.ordinal() > r2.ordinal()) 
 				return 1;
-
-			}
+			
+			if (r1.ordinal() < r2.ordinal()) 
+				return 0;
 		}
 		return 0;
 	}
@@ -191,5 +179,11 @@ public class Hand implements Comparable<Hand> {
 	public void setDeck(LinkedHashMap<Rank, Integer> deck) {
 		this.deck = deck;
 	}
-
+	public void initMapValues(){
+		mapValues=new LinkedHashMap<>();
+		for(PossibleValues p: PossibleValues.values()){
+			mapValues.put(p.getCombination()+p.getColorSame()+p.getCon(), p.ordinal());
+		}
+		
+	}
 }

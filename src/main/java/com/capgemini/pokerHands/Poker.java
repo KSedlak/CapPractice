@@ -20,9 +20,8 @@ public class Poker {
 
 	public void playAllMatchesAndCountPlayer1Winnings(){
 		for(PokerMatch pm :dm.getMatchList()){
-		if(pm.getWinner()==0){
-			p1Wins=p1Wins+1;
-		}
+			p1Wins=p1Wins+pm.getWinner();
+		
 		System.out.println("Match number: "+(++match)+" Winner: "+pm.getWinner());
 		}
 		System.out.println("Player1 wins: "+p1Wins);

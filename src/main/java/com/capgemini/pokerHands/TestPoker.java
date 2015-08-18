@@ -79,7 +79,7 @@ public class TestPoker {
 		h2.addToHand(new Card(Rank.NINE, Suit.CLUBS));
 		int res = h.compareTo(h2);
 		// then
-		Assert.assertEquals(-1, res);
+		Assert.assertEquals(1, res);
 	}
 	
 	@Test
@@ -102,7 +102,7 @@ public class TestPoker {
 		h2.addToHand(new Card(Rank.NINE, Suit.CLUBS));
 		int res = h2.compareTo(h);
 		// then
-		Assert.assertEquals(1, res);
+		Assert.assertEquals(0, res);
 	}
 	@Test
 	public void tesPairToPair() {
@@ -124,7 +124,7 @@ public class TestPoker {
 		h2.addToHand(new Card(Rank.NINE, Suit.CLUBS));
 		int res = h.compareTo(h2);
 		// then
-		Assert.assertEquals(-1, res);
+		Assert.assertEquals(1, res);
 	}
 	@Test
 	public void tesNothingToNothing() {
@@ -146,7 +146,7 @@ public class TestPoker {
 		h2.addToHand(new Card(Rank.NINE, Suit.CLUBS));
 		int res = h.compareTo(h2);
 		// then
-		Assert.assertEquals(-1, res);
+		Assert.assertEquals(1, res);
 	}
 
 

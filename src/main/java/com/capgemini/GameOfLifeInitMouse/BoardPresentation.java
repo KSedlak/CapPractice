@@ -40,6 +40,7 @@ public	class BoardPresentation extends JComponent {
 		public void mouseEnable() {
 			control.initMatrixChoosenLifeStatus(LifeStatus.Dead);
 			mh.setEnable(true);
+			control.setGeneration(0);
 			repaint();
 
 		}
@@ -47,7 +48,6 @@ public	class BoardPresentation extends JComponent {
 		public void mouseDisable() {
 			mh.setEnable(false);
 			control.generateNeighboursListForMatrix();
-			control.setGeneration(0);
 		}
 
 		public void read() throws IOException {
@@ -60,11 +60,14 @@ public	class BoardPresentation extends JComponent {
 
 			for (int i = 0; i < control.getH(); i++) {
 				for (int j = 0; j < control.getW(); j++) {
-					if (control.getListOfCells().get(i * control.getW() + j).getCurrentState().equals(LifeStatus.Life)) {
+					LifeStatus cellStatus=control.getListOfCells().get(i * control.getW() + j).getCurrentState();
+					
+					if (cellStatus.equals(LifeStatus.Life)) 
 						g.fillRect(j * sizeRect, i * sizeRect, sizeRect, sizeRect);
-					} else {
+					
+					if (cellStatus.equals(LifeStatus.Dead)) 
 						g.drawRect(j * sizeRect, i * sizeRect, sizeRect, sizeRect);
-					}
+					
 				}
 			}
 
