@@ -1,4 +1,4 @@
-package GameOfLifeWithoutMouse;
+package com.capgemini.GameOfLifeWithoutMouse;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package com.sexypairs;
+package com.other.sexypairs;
 
 import java.util.ArrayList;
 

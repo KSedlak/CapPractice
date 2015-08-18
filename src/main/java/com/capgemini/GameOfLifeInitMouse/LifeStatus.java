@@ -1,4 +1,4 @@
-package com.GameOfLifeInitMouse;
+package com.capgemini.GameOfLifeInitMouse;
 
 public enum LifeStatus {
 	Dead,

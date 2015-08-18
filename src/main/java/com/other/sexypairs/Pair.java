@@ -1,4 +1,4 @@
-package com.sexypairs;
+package com.other.sexypairs;
 
 public class Pair {
 	int first;

@@ -1,4 +1,4 @@
-package com.GameOfLifeInitMouse;
+package com.capgemini.GameOfLifeInitMouse;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

@@ -1,4 +1,4 @@
-package com.StringSequence;
+package com.other.StringSequence;
 /*
  * Given two strings, write a program that efficiently finds the longest common subsequence.
  * */

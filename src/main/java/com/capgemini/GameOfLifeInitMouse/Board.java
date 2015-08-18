@@ -1,4 +1,4 @@
-package com.GameOfLifeInitMouse;
+package com.capgemini.GameOfLifeInitMouse;
 
 import java.util.ArrayList;
 

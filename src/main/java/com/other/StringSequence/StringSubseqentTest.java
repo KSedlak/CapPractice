@@ -1,4 +1,4 @@
-package com.StringSequence;
+package com.other.StringSequence;
 
 import static org.junit.Assert.*;
 

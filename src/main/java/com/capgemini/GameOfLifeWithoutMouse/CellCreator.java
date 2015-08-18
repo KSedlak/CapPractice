@@ -1,4 +1,4 @@
-package GameOfLifeWithoutMouse;
+package com.capgemini.GameOfLifeWithoutMouse;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ int readHeight;
 		ArrayList<Cell> result;
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("src/main/java/GameOfLifeWithoutMouse/gOf.txt"));
+			br = new BufferedReader(new FileReader("src/main/java/com/capgemini/GameOfLifeWithoutMouse/gOf.txt"));
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();

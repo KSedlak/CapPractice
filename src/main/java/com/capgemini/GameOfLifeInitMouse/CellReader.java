@@ -1,4 +1,4 @@
-package com.GameOfLifeInitMouse;
+package com.capgemini.GameOfLifeInitMouse;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ private int readHeight;
 		ArrayList<Cell> result;
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("src/main/java/com/GameOfLifeInitMouse/gOf.txt"));
+			br = new BufferedReader(new FileReader("src/main/java/com/capgemini/GameOfLifeInitMouse/gOf.txt"));
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();

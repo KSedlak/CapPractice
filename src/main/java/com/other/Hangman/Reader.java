@@ -1,4 +1,4 @@
-package com.Hangman;
+package com.other.Hangman;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

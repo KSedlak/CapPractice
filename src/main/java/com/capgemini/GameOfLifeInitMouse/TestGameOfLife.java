@@ -1,4 +1,4 @@
-package com.GameOfLifeInitMouse;
+package com.capgemini.GameOfLifeInitMouse;
 
 import static org.junit.Assert.*;
 

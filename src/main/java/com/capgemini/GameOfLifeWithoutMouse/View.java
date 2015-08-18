@@ -1,4 +1,4 @@
-package GameOfLifeWithoutMouse;
+package com.capgemini.GameOfLifeWithoutMouse;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

@@ -1,4 +1,4 @@
-package com.Hangman;
+package com.other.Hangman;
 
 public class Player {
 	String name;

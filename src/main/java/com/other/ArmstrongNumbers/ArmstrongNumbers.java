@@ -1,4 +1,4 @@
-package com.ArmstrongNumbers;
+package com.other.ArmstrongNumbers;
 
 public class ArmstrongNumbers {
 	
