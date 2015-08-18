@@ -16,7 +16,7 @@ int readHeight;
 		ArrayList<Cell> result;
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("src/main/java/GameOfLife/gOf.txt"));
+			br = new BufferedReader(new FileReader("src/main/java/GameOfLifeWithoutMouse/gOf.txt"));
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();

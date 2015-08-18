@@ -12,11 +12,12 @@ private int readHeight;
 	
 	
 	public ArrayList<Cell> readFile() throws IOException {
+
 		String[] temp;
 		ArrayList<Cell> result;
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("src/main/java/GameOfLife/gOf.txt"));
+			br = new BufferedReader(new FileReader("src/main/java/com/GameOfLifeInitMouse/gOf.txt"));
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
