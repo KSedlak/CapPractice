@@ -10,14 +10,17 @@ import com.capgemini.pokerHands.Player;
 import com.capgemini.pokerHands.PokerMatch;
 
 public class Reader {
-	
-	ArrayList<Word> listOfWords;
+
+	private ArrayList<Word> listOfWords;
+public Reader() throws IOException{
+	readFile();
+}
 	
 	public void readFile() throws IOException {
-			listOfWords=new ArrayList<Word>();
+		listOfWords = new ArrayList<Word>();
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("src/main/java/com/Hangman/words.txt"));
+			br = new BufferedReader(new FileReader("src/main/java/com/other/Hangman/words.txt"));
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
@@ -26,7 +29,6 @@ public class Reader {
 			String line = br.readLine();
 
 			while (line != null) {
-			System.out.println(line);
 				listOfWords.add(new Word(line));
 				line = br.readLine();
 
@@ -34,10 +36,12 @@ public class Reader {
 
 		} finally {
 			br.close();
-			//System.out.println("File loaded: "+matchList.size()+" matches");
 
 		}
 	}
 
+	public ArrayList<Word> getListOfWords() {
+		return listOfWords;
+	}
 
 }
