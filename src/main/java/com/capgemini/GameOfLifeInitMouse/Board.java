@@ -40,11 +40,47 @@ public class Board {
 			}
 		generateNeighboursListForMatrix();
 	}
-	public void setCellList(ArrayList<Cell> l) {
-		listOfCells = l;
-
+	
+	public void generateNeighboursListForMatrix() {
+		for (int x = 0; x < h; x++) {
+			for (int y = 0; y < w; y++) {
+				ArrayList<Cell> n = new ArrayList<Cell>();
+				for (int i = x - 1; i <= x + 1; i++) {
+					for (int j = y - 1; j <= y + 1; j++) {
+						if (i >= 0 && j >= 0 && // lower bounds
+								i < h && j < w && // upper bounds
+								!(i == x && j == y) // slef remove
+						) {
+							n.add(getCell(i * w + j));
+						}
+					}
+				}
+				getCell(x * w + y).setNeighbours(n);
+			}
+		}
 	}
 
+
+	public void nextGeneration() {
+		for (Cell c : listOfCells) {//calculate next states
+			int temp = c.getNumberOfLifeNeighbours();
+			LifeStatus curr = c.getCurrentState();
+			c.setNextState(curr);
+			
+			if (curr.equals(LifeStatus.Life) && (temp < 2 || temp > 3)) 
+				c.setNextState(LifeStatus.Dead);
+			
+			
+			if (curr.equals(LifeStatus.Dead) && temp == 3) 
+				c.setNextState(LifeStatus.Life);
+		}
+	
+		generation++;
+		for (Cell c : listOfCells) {//switch current to next state
+			c.setCurrentState(c.getNextState());
+		}
+
+	}
 	public int getW() {
 		return w;
 	}
@@ -72,49 +108,11 @@ public class Board {
 	public void setGeneration(int generation) {
 		this.generation = generation;
 	}
-
-	public void generateNeighboursListForMatrix() {
-		for (int x = 0; x < h; x++) {
-			for (int y = 0; y < w; y++) {
-				ArrayList<Cell> n = new ArrayList<Cell>();
-				for (int i = x - 1; i <= x + 1; i++) {
-					for (int j = y - 1; j <= y + 1; j++) {
-						if (i >= 0 && j >= 0 && // lower bounds
-								i < h && j < w && // upper bounds
-								!(i == x && j == y) // slef remove
-						) {
-							n.add(getCell(i * w + j));
-						}
-					}
-				}
-				getCell(x * w + y).setNeighbours(n);
-			}
-		}
-	}
-
 	public Cell getCell(int id) {
 		return listOfCells.get(id);
 	}
-
-	public void nextGeneration() {
-		for (Cell c : listOfCells) {//calculate next states
-			int temp = c.getNumberOfLifeNeighbours();
-			LifeStatus curr = c.getCurrentState();
-			c.setNextState(curr);
-			
-			if (curr.equals(LifeStatus.Life) && (temp < 2 || temp > 3)) 
-				c.setNextState(LifeStatus.Dead);
-			
-			
-			if (curr.equals(LifeStatus.Dead) && temp == 3) 
-				c.setNextState(LifeStatus.Life);
-		}
-	
-		generation++;
-		for (Cell c : listOfCells) {//switch current to next state
-			c.setCurrentState(c.getNextState());
-		}
+	public void setCellList(ArrayList<Cell> l) {
+		listOfCells = l;
 
 	}
-
 }
