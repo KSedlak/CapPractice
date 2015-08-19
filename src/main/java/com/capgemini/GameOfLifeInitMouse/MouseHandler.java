@@ -20,13 +20,13 @@ public class MouseHandler implements MouseListener {
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(enable){
+/*		if(enable){
 			int x =	e.getX()/sizeRectangle;
 			int y = e.getY()/sizeRectangle;
 			int idx=y*gof.getW()+ x;
 			gof.getCell(idx).changeLifeStatus();
-			parentForRepaint.repaint();
-		}
+			parentForRepaint.repaint();*/
+		//}
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {

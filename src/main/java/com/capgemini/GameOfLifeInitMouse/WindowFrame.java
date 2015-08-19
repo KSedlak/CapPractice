@@ -24,8 +24,8 @@ public class WindowFrame extends JFrame {
 	private int sizeSingleRectangle;
 	private BoardPresentation p;
 	private	CellReader creator;
-	private Board gof;
-
+	private Board board;
+	private GameLogic gol;
 	private JLabel generationCounter;
 
 	private JButton next;
@@ -36,17 +36,17 @@ public class WindowFrame extends JFrame {
 
 	private Container buttons;
 
-	public WindowFrame(Board g, CellReader cc, int rectSize) {
+	public WindowFrame(GameLogic gl, CellReader cc, int rectSize) {
 		
 		sizeSingleRectangle=rectSize;
 		creator = cc;
-		gof = g;
+		gol = gl;
 		generationCounter = new JLabel("Generation: 0");
-		p=new BoardPresentation(gof, creator, generationCounter, sizeSingleRectangle);
+		p=new BoardPresentation(gol.getBoard(), generationCounter, sizeSingleRectangle);
 		
 		initButtons();
 	
-		setBounds(30, 30, gof.getW() * sizeSingleRectangle + 90, gof.getH() * sizeSingleRectangle + 130);
+		setBounds(30, 30, gol.getBoard().getWidth()* sizeSingleRectangle + 90, gol.getBoard().getHeight() * sizeSingleRectangle + 130);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		getContentPane().add(buttons, BorderLayout.SOUTH);
@@ -83,34 +83,39 @@ public class WindowFrame extends JFrame {
 		file.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
        
-           try {
-			p.read();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+            try {
+				creator.setBoardParamteresFromFile(gol);
+				p=new BoardPresentation(gol.getBoard(), generationCounter, sizeSingleRectangle);
+				repaint();
+			
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             }
             });
 		random.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-       
-           p.random();
+            gol.randomBoard();
+        	p=new BoardPresentation(gol.getBoard(), generationCounter, sizeSingleRectangle);
+        	p.repaint();
             }
             });
-		next.addActionListener(new java.awt.event.ActionListener() {
+			next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-       
-            p.next();
+            	gol.nextGeneration();
+            	repaint();
+
             }
             });
-		mouseStart.addActionListener(new java.awt.event.ActionListener() {
+			mouseStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
        
             p.mouseEnable();
             mouseEnd.setVisible(true);
             }
             });
-		mouseEnd.addActionListener(new java.awt.event.ActionListener() {
+			mouseEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
        
             p.mouseDisable();

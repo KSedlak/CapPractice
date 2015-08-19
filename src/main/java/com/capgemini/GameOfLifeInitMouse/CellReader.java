@@ -45,11 +45,10 @@ private int readHeight;
 		}
 	return result;
 	}
-	public void setBoardParamteresFromFile(Board g) throws IOException{
+	public void setBoardParamteresFromFile(GameLogic gL) throws IOException{
 		ArrayList<Cell> r= readFile();
-		g.setCellList(r);
-		g.setWidth(readWidth);
-		g.setHeight(readHeight);
-		g.generateNeighboursListForMatrix();
+		Board b=new Board(readWidth, readWidth);
+		b.setBoardMatrixFromFile(r);
+		gL.setBoard(b);
 	}
 }

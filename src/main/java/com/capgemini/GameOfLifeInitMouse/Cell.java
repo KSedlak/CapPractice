@@ -6,7 +6,6 @@ public class Cell {
 	private LifeStatus currentState;
 	private LifeStatus nextState;
 	private ArrayList<Cell> neighbours;
-	private int id;
 
 	public Cell(LifeStatus s) {
 		currentState = s;
@@ -22,7 +21,7 @@ public class Cell {
 
 	public int getNumberOfLifeNeighbours() {
 		int numberofNeighbours = 0;
-		for (Cell c : neighbours) {
+			for (Cell c : neighbours) {
 			if (c.currentState.equals(LifeStatus.Life)) {
 				numberofNeighbours++;
 			}
@@ -46,13 +45,7 @@ public class Cell {
 		this.nextState = nextState;
 	}
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public void changeLifeStatus() {
 		int temp = currentState.ordinal();
