@@ -17,12 +17,14 @@ public class KeyboardListener extends KeyAdapter {
 	
 		    pressed=evt.getKeyChar();
 		    callParent(pressed);
+		    System.out.println(pressed);
 		   
 		  
 	}
 	public void callParent(char c){
 		parent.getGl().checkLetterAndMoidifyGaps(c);
 		parent.getWrongCounter().setText("Wrong tries: "+parent.getGl().getNumberOfWrongLetter());
+		parent.getPointCounter().setText("Ponts:  "+parent.getGl().getNumberOfPoints());
 		parent.repaint();
 	}
 }

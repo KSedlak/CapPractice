@@ -13,11 +13,13 @@ public class GameLogic {
 	private HangmanPainting hp;
 	private int numberOfReplacment;
 	private String wordWithGaps;
+	private int numberOfPoints;
 	
 	public GameLogic(Reader reader) {
 		this.reader = reader;
 		hp = new HangmanPainting();
 		randomWord();
+		numberOfPoints=0;
 
 	}
 
@@ -57,12 +59,54 @@ public class GameLogic {
 	String temp=wordWithGaps.replace(" ", "");
 	if(temp.equals(currentWord.getWord())){
 			hp.setGr(GameResult.Winner);
+			numberOfPoints++;
 		}
 	}
-	
+
+
 	public String replaceLetterAtIndex(String input, char replecment, int idx) {
 		return input.substring(0, idx - 1) + replecment + input.substring(idx);
 
+	}
+
+	public String createWordWithGaps(){
+		String res="";
+		for(int i=0;i<currentWord.getWord().length()-1;i++){
+			res=res+"_ ";
+		}
+		res=res+"_";
+		return res;
+	}
+	public void randomWord() {
+		int bounds = reader.getListOfWords().size();
+		int rand = (int) (Math.random() * bounds);
+		setCurrentWord(reader.getListOfWords().get(rand));
+		wordWithGaps=createWordWithGaps();
+		clearScores();
+
+	}
+
+	public void clearScores() {
+		numberOfChecks = 0;
+		numberOfWrongLetter = 0;
+		numberOfReplacment=0;
+		hp.setPivot(0);
+		hp.setGr(null);
+
+	}
+	
+	public int getNumberOfPoints() {
+		return numberOfPoints;
+	}
+	public HangmanPainting getHp() {
+		return hp;
+	}
+	public String getWordWithGaps() {
+		return wordWithGaps;
+	}
+
+	public void setWordWithGaps(String wordWithGaps) {
+		this.wordWithGaps = wordWithGaps;
 	}
 
 	public Reader getReader() {
@@ -96,42 +140,4 @@ public class GameLogic {
 	public void setCurrentWord(Word currentWord) {
 		this.currentWord = currentWord;
 	}
-	public String createWordWithGaps(){
-		String res="";
-		for(int i=0;i<currentWord.getWord().length()-1;i++){
-			res=res+"_ ";
-		}
-		res=res+"_";
-		return res;
-	}
-	public void randomWord() {
-		int bounds = reader.getListOfWords().size();
-		int rand = (int) (Math.random() * bounds);
-		setCurrentWord(reader.getListOfWords().get(rand));
-		wordWithGaps=createWordWithGaps();
-		clearScores();
-
-	}
-
-	public String getWordWithGaps() {
-		return wordWithGaps;
-	}
-
-	public void setWordWithGaps(String wordWithGaps) {
-		this.wordWithGaps = wordWithGaps;
-	}
-
-	public void clearScores() {
-		numberOfChecks = 0;
-		numberOfWrongLetter = 0;
-		numberOfReplacment=0;
-		hp.setPivot(0);
-		hp.setGr(null);
-
-	}
-
-	public HangmanPainting getHp() {
-		return hp;
-	}
-
 }

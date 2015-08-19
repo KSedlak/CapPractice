@@ -25,6 +25,7 @@ public class HangmanPainting extends JComponent {
 			g.setFont(new Font("Arial", 2, 50));
 			g.drawString(gr.getMessage(), 20, 50);
 		}
+		else{
 		for (int i = 0; i < pivot; i++) {
 			temp = hg.getLinesOfHangMan().get(i);
 		if(temp.isOval()){
@@ -32,7 +33,7 @@ public class HangmanPainting extends JComponent {
 		}else{
 			g.drawLine(temp.getX1(), temp.getY1(), temp.getX2(), temp.getY2());
 		}
-			
+		}
 		}
 
 	}

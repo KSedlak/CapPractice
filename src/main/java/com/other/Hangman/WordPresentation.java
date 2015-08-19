@@ -17,7 +17,7 @@ public	class WordPresentation extends JComponent {
 		}
 
 		public void paint(Graphics g) {
-		g.setFont(new Font("Arial", 2, 50));
+		g.setFont(new Font("Arial", 2, 40));
 		g.drawString(word.getWordWithGaps(), 150, 200);
 
 		}

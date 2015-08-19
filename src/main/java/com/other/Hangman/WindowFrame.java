@@ -26,23 +26,30 @@ public class WindowFrame extends JFrame {
 
 
 	private JLabel wrongCounter;
-
-	private JButton random;
+	private JLabel pointCounter;
+	
+	private JButton next;
 	private KeyboardListener kl;
 	private WordPresentation wp;
+	
 	private Container buttons;
+	private Container labels;
+	
 	JPanel presentation ;
 	private GameLogic gl;
 	private HangmanPainting hp;
 	
 	public WindowFrame(GameLogic g){
 		gl=g;
+		hp=gl.getHp();
 		kl=new KeyboardListener(this);
 		addKeyListener(kl);
+		
 		wp=new WordPresentation(gl);
 		wrongCounter=new JLabel();
-		hp=gl.getHp();
-		
+		pointCounter= new JLabel();
+
+		setTitle("Hangman game - animals");
 		setBounds(30, 30, 1000,400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setFocusable(true);
@@ -52,8 +59,13 @@ public class WindowFrame extends JFrame {
 		presentation.add(wp);
 		presentation.add(hp);
 		
+		labels=new Container();
+		labels.setLayout(new FlowLayout());
+		labels.add(wrongCounter);
+		labels.add(pointCounter);
+		
 		getContentPane().add(presentation, BorderLayout.CENTER);
-		getContentPane().add(wrongCounter, BorderLayout.NORTH);
+		getContentPane().add(labels, BorderLayout.NORTH);
 		getContentPane().add(buttons, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
@@ -62,13 +74,13 @@ public class WindowFrame extends JFrame {
 
 	public void initButtons() {
 		buttons = new Container();
-		random = new JButton("random");
-		random.setFocusable(false);
+		next = new JButton("next word");
+		next.setFocusable(false);
 		
 		buttons.setLayout(new FlowLayout());
 		buttons.setPreferredSize(new Dimension(100, 50));
 		
-		buttons.add(random);
+		buttons.add(next);
 		
 		addListeners();
 		setSizeButtons();
@@ -78,12 +90,13 @@ public class WindowFrame extends JFrame {
 		//listenery
 		
 
-		random.addActionListener(new java.awt.event.ActionListener() {
+		next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
        
             	gl.randomWord();
             	wp.setWord(gl.getCurrentWord());
             	hp.setPivot(0);
+            	
             	repaint();
             	
             }
@@ -91,7 +104,7 @@ public class WindowFrame extends JFrame {
 	}
 
 	public void setSizeButtons() {
-		random.setPreferredSize(new Dimension(100, 30));
+		next.setPreferredSize(new Dimension(100, 30));
 
 
 	}
@@ -118,6 +131,14 @@ public class WindowFrame extends JFrame {
 
 	public void setHp(HangmanPainting hp) {
 		this.hp = hp;
+	}
+
+	public JLabel getPointCounter() {
+		return pointCounter;
+	}
+
+	public void setPointCounter(JLabel pointCounter) {
+		this.pointCounter = pointCounter;
 	}
 
 
