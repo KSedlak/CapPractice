@@ -33,4 +33,17 @@ public enum PossibleValues {
 	public Boolean getCon() {
 		return consecutive;
 	}
+	
+	public int getOrdinal(String com, Boolean same, Boolean con){
+		for(PossibleValues p:PossibleValues.values())
+		if(
+				p.combination.equals(com) &&
+				p.colorSame.equals(same) &&
+				p.consecutive.equals(con))
+		{
+			return p.ordinal();
+		}
+
+		return 0;
+	}
 }

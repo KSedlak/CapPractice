@@ -43,6 +43,7 @@ public class WindowFrame extends JFrame {
 		gof = g;
 		generationCounter = new JLabel("Generation: 0");
 		p=new BoardPresentation(gof, creator, generationCounter, sizeSingleRectangle);
+		
 		initButtons();
 	
 		setBounds(30, 30, gof.getW() * sizeSingleRectangle + 90, gof.getH() * sizeSingleRectangle + 130);

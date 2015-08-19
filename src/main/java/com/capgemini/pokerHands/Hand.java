@@ -12,7 +12,6 @@ import java.util.Map.Entry;
 
 public class Hand implements Comparable<Hand> {
 	private LinkedHashMap<Rank, Integer> deck;
-	private LinkedHashMap<String, Integer> mapValues;
 	private Suit suit;
 	private boolean sameColor;
 	private boolean con;
@@ -23,7 +22,7 @@ public class Hand implements Comparable<Hand> {
 		deck = new LinkedHashMap();
 		sameColor = true;
 		con = false;
-		initMapValues();
+
 
 	}
 
@@ -86,8 +85,10 @@ public class Hand implements Comparable<Hand> {
 
 	@Override
 	public int compareTo(Hand o) {
-		int value1 = mapValues.get(this.handRepresentation+this.sameColor+this.con);
-		int value2 = mapValues.get(o.handRepresentation+o.sameColor+o.con);	
+		
+		int value1 = PossibleValues.Flush.getOrdinal(this.handRepresentation,this.sameColor,this.con);
+
+		int value2 =  PossibleValues.Flush.getOrdinal(o.handRepresentation,o.sameColor,o.con);
 		
 		if (value1 > value2) 
 			return 1;
@@ -178,12 +179,5 @@ public class Hand implements Comparable<Hand> {
 
 	public void setDeck(LinkedHashMap<Rank, Integer> deck) {
 		this.deck = deck;
-	}
-	public void initMapValues(){
-		mapValues=new LinkedHashMap<>();
-		for(PossibleValues p: PossibleValues.values()){
-			mapValues.put(p.getCombination()+p.getColorSame()+p.getCon(), p.ordinal());
-		}
-		
 	}
 }

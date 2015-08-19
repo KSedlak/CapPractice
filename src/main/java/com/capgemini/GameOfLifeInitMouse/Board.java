@@ -29,14 +29,13 @@ public class Board {
 	}
 
 	public void initMatrixChoosenLifeStatus(LifeStatus s) {
-		int rand;
 		listOfCells.clear();
 		for (int j = 0; j < h; j++) {
 			for (int k = 0; k < w; k++) {
-				rand = (int) (Math.random() * LifeStatus.values().length);
 					listOfCells.add(new Cell(s));
+					listOfCells.get(listOfCells.size() - 1).setId(listOfCells.size() - 1);
 				}
-				listOfCells.get(listOfCells.size() - 1).setId(listOfCells.size() - 1);
+				
 			}
 		generateNeighboursListForMatrix();
 	}

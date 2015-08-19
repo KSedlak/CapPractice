@@ -1,7 +1,6 @@
 package com.other.Hangman;
 
 
-
 import org.junit.Test;
 
 import junit.framework.Assert;

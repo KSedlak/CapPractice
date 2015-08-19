@@ -22,9 +22,9 @@ public class Poker {
 		for(PokerMatch pm :dm.getMatchList()){
 			p1Wins=p1Wins+pm.getWinner();
 		
-		System.out.println("Match number: "+(++match)+" Winner: "+pm.getWinner());
+		//System.out.println("Match number: "+(++match)+" Winner: "+pm.getWinner());
 		}
-		System.out.println("Player1 wins: "+p1Wins);
+		//System.out.println("Player1 wins: "+p1Wins);
 	}
 
 	public int getP1Wins() {
