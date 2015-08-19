@@ -9,10 +9,6 @@ public HangmanDraw(){
 	initDrawing();
 }
 
-
-
-
-
 	public void initDrawing() {
 		linesOfHangMan = new ArrayList<FigureCoordinates>();
 		linesOfHangMan.add(new FigureCoordinates(100, 200, 130, 200));
@@ -27,10 +23,6 @@ public HangmanDraw(){
 		linesOfHangMan.add(new FigureCoordinates(200, 150, 175, 180));
 		linesOfHangMan.add(new FigureCoordinates(200, 150, 225, 180));
 	}
-
-
-
-
 
 	public ArrayList<FigureCoordinates> getLinesOfHangMan() {
 		return linesOfHangMan;

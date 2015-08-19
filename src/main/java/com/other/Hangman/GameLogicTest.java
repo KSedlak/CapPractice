@@ -1,6 +1,6 @@
 package com.other.Hangman;
 
-import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 

@@ -2,11 +2,7 @@ package com.other.Hangman;
 
 import java.awt.Font;
 import java.awt.Graphics;
-import java.io.IOException;
-
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-
 
 public	class WordPresentation extends JComponent {
 	private GameLogic word;

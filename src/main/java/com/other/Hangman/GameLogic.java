@@ -2,8 +2,6 @@ package com.other.Hangman;
 
 import java.util.ArrayList;
 
-import com.capgemini.GameOfLifeInitMouse.LifeStatus;
-
 public class GameLogic {
 
 	private Word currentWord;
@@ -11,7 +9,6 @@ public class GameLogic {
 	private int numberOfWrongLetter;
 	private int numberOfChecks;
 	private HangmanPainting hp;
-	private int numberOfReplacment;
 	private String wordWithGaps;
 	private int numberOfPoints;
 	
@@ -35,7 +32,6 @@ public class GameLogic {
 		String newWord = wordWithGaps;
 		for (Integer idx : indexes) {
 			newWord = replaceLetterAtIndex(newWord, searchChar, idx * 2 + 1);
-			numberOfReplacment++;
 		}
 
 		if (temp == 0) {
@@ -89,7 +85,6 @@ public class GameLogic {
 	public void clearScores() {
 		numberOfChecks = 0;
 		numberOfWrongLetter = 0;
-		numberOfReplacment=0;
 		hp.setPivot(0);
 		hp.setGr(null);
 

@@ -6,16 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.capgemini.pokerHands.Player;
-import com.capgemini.pokerHands.PokerMatch;
-
 public class Reader {
 
 	private ArrayList<Word> listOfWords;
-public Reader() throws IOException{
-	readFile();
-}
-	
+
+	public Reader() throws IOException {
+		readFile();
+	}
+
 	public void readFile() throws IOException {
 		listOfWords = new ArrayList<Word>();
 		BufferedReader br = null;

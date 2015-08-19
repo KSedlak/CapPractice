@@ -1,29 +1,16 @@
 package com.other.Hangman;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.IOException;
-
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class WindowFrame extends JFrame {
-
-
-
 
 	private JLabel wrongCounter;
 	private JLabel pointCounter;
@@ -35,7 +22,7 @@ public class WindowFrame extends JFrame {
 	private Container buttons;
 	private Container labels;
 	
-	JPanel presentation ;
+	private JPanel presentation ;
 	private GameLogic gl;
 	private HangmanPainting hp;
 	
@@ -87,13 +74,12 @@ public class WindowFrame extends JFrame {
 		
 	}
 	public void addListeners(){ 
-		//listenery
 		
-
 		next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
        
             	gl.randomWord();
+        		wrongCounter.setText("Wrong tries: "+gl.getNumberOfWrongLetter());
             	wp.setWord(gl.getCurrentWord());
             	hp.setPivot(0);
             	
@@ -102,11 +88,8 @@ public class WindowFrame extends JFrame {
             }
             });
 	}
-
 	public void setSizeButtons() {
 		next.setPreferredSize(new Dimension(100, 30));
-
-
 	}
 
 	public GameLogic getGl() {
