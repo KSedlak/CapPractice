@@ -69,7 +69,7 @@ public class GameLogic {
 		
 	
 	public void randomBoard(){
-		board.initPositionsForMatrix();
+		board.randomizeExistCellsInMap();
 		generation=0;
 		generateNeighboursList();
 	}
@@ -78,8 +78,16 @@ public class GameLogic {
 
 	public void setBoard(Board board) {
 		this.board = board;
+		generation=0;
 		generateNeighboursList();
 	}
+
+	public void refreshBoard() {
+		generation=0;
+		generateNeighboursList();
+		
+	}
+	
 
 
 }

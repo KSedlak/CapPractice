@@ -11,32 +11,34 @@ public	class BoardPresentation extends JComponent {
 	
 	private Board board;
 	private	int sizeRect;
-	private	JLabel labelForGenerationCounter;
 	private	MouseHandler mh;
 
-		public BoardPresentation(Board g, JLabel gen, int sizeSingleRect) {
+		public BoardPresentation(Board g, int sizeSingleRect) {
 			board = g;
-			labelForGenerationCounter = gen;
+
 			sizeRect = sizeSingleRect;
 			mh = new MouseHandler(sizeRect, board, this);
 			addMouseListener(mh);
 
 		}
 
-	
 		public void mouseEnable() {
-			//control.initMatrixChoosenLifeStatus(LifeStatus.Dead);
-			mh.setEnable(true);
-			//control.setGeneration(0);
+			board.ClearBoard();
+			mh.setEnable(true);		
 			repaint();
 
 		}
 
 		public void mouseDisable() {
 			mh.setEnable(false);
-	//		control.generateNeighboursListForMatrix();
+			
 		}
-
+		
+		public void setBoard(Board b){
+			this.board=b;
+			repaint();
+			
+		}
 
 		public void paint(Graphics g) {
 
@@ -54,6 +56,7 @@ public	class BoardPresentation extends JComponent {
 			}
 
 		}
+		
 
 	}
 

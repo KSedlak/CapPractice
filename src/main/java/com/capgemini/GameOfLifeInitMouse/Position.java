@@ -11,8 +11,6 @@ public class Position{
 	
 	}
 
-	
-
 	public int getDistanceFrom(Position o) {
 	int distance=0;
 	int temp=0;

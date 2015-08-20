@@ -42,7 +42,7 @@ public class WindowFrame extends JFrame {
 		creator = cc;
 		gol = gl;
 		generationCounter = new JLabel("Generation: 0");
-		p=new BoardPresentation(gol.getBoard(), generationCounter, sizeSingleRectangle);
+		p=new BoardPresentation(gol.getBoard(), sizeSingleRectangle);
 		
 		initButtons();
 	
@@ -85,7 +85,8 @@ public class WindowFrame extends JFrame {
        
             try {
 				creator.setBoardParamteresFromFile(gol);
-				p=new BoardPresentation(gol.getBoard(), generationCounter, sizeSingleRectangle);
+				p.setBoard(gol.getBoard());
+				updateGenerationCounter();
 				repaint();
 			
 			} catch (IOException e1) {
@@ -94,16 +95,18 @@ public class WindowFrame extends JFrame {
 			}
             }
             });
-		random.addActionListener(new java.awt.event.ActionListener() {
+			random.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
             gol.randomBoard();
-        	p=new BoardPresentation(gol.getBoard(), generationCounter, sizeSingleRectangle);
-        	p.repaint();
+        	p.setBoard(gol.getBoard());
+        	updateGenerationCounter();
+        	repaint();
             }
             });
 			next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
             	gol.nextGeneration();
+            	updateGenerationCounter();
             	repaint();
 
             }
@@ -131,6 +134,8 @@ public class WindowFrame extends JFrame {
 		mouseStart.setPreferredSize(new Dimension(100, 30));
 		mouseEnd.setPreferredSize(new Dimension(100, 30));
 	}
-
+	public void updateGenerationCounter(){
+		generationCounter.setText("Generation: "+gol.getGeneration());
+	}
 
 }

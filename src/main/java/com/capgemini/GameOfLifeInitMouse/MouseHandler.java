@@ -8,25 +8,25 @@ import javax.swing.JComponent;
 public class MouseHandler implements MouseListener {
 	
 	private int sizeRectangle;
-	private Board gof;
+	private Board board;
 	private Boolean enable;
 	private JComponent parentForRepaint;
 	
-	public MouseHandler(int size, Board controler, JComponent parent){
+	public MouseHandler(int size, Board b, JComponent parent){
 		sizeRectangle=size;
-		gof=controler;
+		board=b;
 		enable=false;
 		parentForRepaint=parent;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-/*		if(enable){
+	if(enable){
 			int x =	e.getX()/sizeRectangle;
 			int y = e.getY()/sizeRectangle;
-			int idx=y*gof.getW()+ x;
-			gof.getCell(idx).changeLifeStatus();
-			parentForRepaint.repaint();*/
-		//}
+			int idx=y*board.getWidth()+ x;
+			board.getCell(idx).changeLifeStatus();
+			parentForRepaint.repaint();
+		}
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {

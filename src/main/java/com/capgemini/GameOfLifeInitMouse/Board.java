@@ -18,27 +18,50 @@ public class Board {
 		height=b;
 		map = new LinkedHashMap<>();
 		listOfCells = new ArrayList<Cell>();
-		
+		initRandomMap();
 	}
+	public void initMap() {
+		map.clear();
+		int count=0;
 
-	public void initPositionsForMatrix() {
-		int rand;
 		for(int i =0; i<height;i++){
 			for(int j =0; j<width;j++){
 				int[] tab={j,i};
-				rand=(int)(Math.random()*2);
-				Position p=new Position(tab);
-				System.out.println(j+" "+i+" life: "+rand);
-				Cell ce=new Cell(LifeStatus.values()[rand]);
-				map.put(p, ce);
-				listOfCells.add(ce);
-				
+				map.put(new Position(tab),listOfCells.get(count));	
+				count++;
 			}
-		}
+			}
 
 	}
-
-
+	public void initRandomMap() {
+			initializeRandomCells(width*height);
+			initMap();
+		
+		
+	}
+	public void randomizeExistCellsInMap(){
+		int random;
+		for(Cell c:map.values()){
+			random=(int)(Math.random()*LifeStatus.values().length);
+			c.setCurrentState(LifeStatus.values()[random]);
+		}
+		
+	}
+	public void initializeRandomCells(int size){
+		int random;
+		listOfCells.clear();
+		for(int i=0;i<size;i++){
+			random=(int)(Math.random()*LifeStatus.values().length);
+			listOfCells.add(new Cell(LifeStatus.values()[random]));
+		}
+	}
+	
+	public void ClearBoard(){
+		for(Cell c:map.values()){
+			c.setCurrentState(LifeStatus.Dead);
+			c.setNextState(LifeStatus.Dead);
+		}
+	}
 
 	public int getWidth() {
 		return width;
@@ -73,26 +96,15 @@ public class Board {
 		this.listOfCells = listOfCells;
 		
 	}
-
-
-	public void setBoardMatrixFromFile(ArrayList<Cell> cells)  {
-		map.clear();
-		int count=0;
-		for(int i =0; i<height;i++){
-			for(int j =0; j<width;j++){
-				int[] tab={j,i};
-				Position p=new Position(tab);
-				Cell ce=cells.get(count);
-				map.put(p, ce);
-				count++;
-				setListOfCells(cells);			
-			}
-		}
-
+	public Cell getCell(int idx){
+		return listOfCells.get(idx);
 	}
 
 
-
-
+	public void setBoardMatrixFromFile(ArrayList<Cell> cells)  {
+		setListOfCells(cells);
+		initMap();
+		
+		}
 	
 }

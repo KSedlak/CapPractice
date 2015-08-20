@@ -47,8 +47,9 @@ private int readHeight;
 	}
 	public void setBoardParamteresFromFile(GameLogic gL) throws IOException{
 		ArrayList<Cell> r= readFile();
-		Board b=new Board(readWidth, readWidth);
-		b.setBoardMatrixFromFile(r);
-		gL.setBoard(b);
+			gL.getBoard().setHeight(readHeight);
+			gL.getBoard().setWidth(readWidth);
+			gL.getBoard().setBoardMatrixFromFile(r);
+			gL.refreshBoard();
 	}
 }
