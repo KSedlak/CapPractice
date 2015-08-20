@@ -39,7 +39,7 @@ public enum PossibleValues {
 		if(
 				p.combination.equals(com) &&
 				p.colorSame.equals(same) &&
-				p.consecutive.equals(con))
+				p.consecutive.equals(con))	//always true
 		{
 			return p.ordinal();
 		}
