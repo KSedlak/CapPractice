@@ -1,10 +1,8 @@
 package com.capgemini.GameOfLifeInitMouse;
 
 import java.awt.Graphics;
-import java.io.IOException;
-
 import javax.swing.JComponent;
-import javax.swing.JLabel;
+
 
 
 public	class BoardPresentation extends JComponent {

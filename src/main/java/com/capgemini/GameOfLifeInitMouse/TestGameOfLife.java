@@ -4,11 +4,10 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import com.capgemini.BowlingGame.Bowling_old;
 
-import junit.framework.Assert;
 
 public class TestGameOfLife {
 Board board;

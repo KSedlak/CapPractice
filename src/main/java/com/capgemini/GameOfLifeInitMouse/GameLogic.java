@@ -1,8 +1,6 @@
 package com.capgemini.GameOfLifeInitMouse;
 
-
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 
@@ -71,7 +69,6 @@ public class GameLogic {
 	public void randomBoard(){
 		board.randomizeExistCellsInMap();
 		generation=0;
-		generateNeighboursList();
 	}
 
 

@@ -1,20 +1,12 @@
 package com.capgemini.GameOfLifeInitMouse;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.LayoutManager;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
-
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -24,7 +16,6 @@ public class WindowFrame extends JFrame {
 	private int sizeSingleRectangle;
 	private BoardPresentation p;
 	private	CellReader creator;
-	private Board board;
 	private GameLogic gol;
 	private JLabel generationCounter;
 
