@@ -1,7 +1,5 @@
 package com.capgemini.Euler298;
 
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Robin extends Player {
 

@@ -1,27 +1,26 @@
 package com.capgemini.Euler298;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
-public  abstract class Player implements Observer {
+public abstract class Player implements Observer {
 	private String name;
 	private int points;
-	private static int memorySize=5;
+	private static int memorySize = 5;
 	ArrayList<Integer> memory;
+
 	public Player(String name) {
 		super();
 		this.name = name;
-		points=0;
+		points = 0;
 		memory = new ArrayList<Integer>();
 
 	}
 
 	@Override
 	public void update(int newNumber) {
-			checkNumber(newNumber);
-		
-	}	
+		checkNumber(newNumber);
+
+	}
 
 	public void addNumberToMemory(int n) {
 		if (memory.size() == getMemorySize()) {
@@ -29,19 +28,19 @@ public  abstract class Player implements Observer {
 		}
 		memory.add(n);
 	}
-	
-	public abstract  void removeNumberFromMemory();
+
+	public abstract void removeNumberFromMemory();
 
 	public static int getMemorySize() {
 		return memorySize;
 	}
+
 	public abstract void checkNumber(int n);
-	
-	public void increasePoints(){
+
+	public void increasePoints() {
 		points++;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -53,7 +52,5 @@ public  abstract class Player implements Observer {
 	public ArrayList<Integer> getMemory() {
 		return memory;
 	}
-
-	
 
 }

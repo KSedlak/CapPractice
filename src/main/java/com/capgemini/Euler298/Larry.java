@@ -1,9 +1,6 @@
 package com.capgemini.Euler298;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Queue;
+
 import java.util.TreeMap;
 
 public class Larry extends Player {
@@ -30,8 +27,6 @@ public class Larry extends Player {
 
 	public int getIdxLongestNotCalledNumber() {
 
-		for (Integer i : history.keySet()) {
-		}
 		int minIdx = 0;// round for first elemnt from memory
 		for (int i = 0; i < memory.size(); i++) {
 			if (history.get(memory.get(i)) < history.get(memory.get(minIdx))) {
