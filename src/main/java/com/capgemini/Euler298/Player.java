@@ -23,9 +23,11 @@ public abstract class Player implements Observer {
 	}
 
 	public void addNumberToMemory(int n) {
-		if (memory.size() == getMemorySize()) {
+		if (memory.size() == getMemorySize())
+		{
 			removeNumberFromMemory();
 		}
+		
 		memory.add(n);
 	}
 
@@ -35,7 +37,15 @@ public abstract class Player implements Observer {
 		return memorySize;
 	}
 
-	public abstract void checkNumber(int n);
+	public void checkNumber(int n) {
+
+		if (memory.contains(n)) {
+			increasePoints();
+		} 
+		else {
+			addNumberToMemory(n);
+		}
+	}
 
 	public void increasePoints() {
 		points++;

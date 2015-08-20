@@ -39,11 +39,7 @@ public class Larry extends Player {
 	public void checkNumber(int n) {
 		addToHistory(n);
 		round++;
-		if (memory.contains(n)) {
-			increasePoints();
-		} else {
-			addNumberToMemory(n);
-		}
+		super.checkNumber(n);
 	}
 
 }
