@@ -1,10 +1,8 @@
 package com.capgemini.GameOfLifeInitMouse;
 
-import java.util.ArrayList;
-
 public class Position{
 	private int[] cords;
-	ArrayList<Position> neighbourhood;
+	
 	public Position(int[]c) {
 		super();
 	cords=c;
